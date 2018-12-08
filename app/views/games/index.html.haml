@@ -14,7 +14,11 @@ Computer vs Computer
 =radio_button_tag 'player', 4, false
 Human vs Human
 
+=hidden_field_tag 'played_positions', '[]'
 
+%br
+%h3
+  #results
 
 %table
   %tr
@@ -115,7 +119,9 @@ Human vs Human
   $('.blank').on('click', function(){
     $(this).hide();
     position = this.id
+    played_positions = $('#played_positions')[0].value
     $('#' + position + '.first-player').show();
+    $.ajax({url: "/games/move.js?played_positions=" + played_positions + "&new_move=" + position, success: function(result){
+    console.log("called move endpoint")}})
   });
 
-}
