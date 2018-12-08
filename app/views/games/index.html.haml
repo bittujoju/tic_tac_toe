@@ -1,0 +1,112 @@
+%h3
+  Select Game Mode
+
+%br
+=radio_button_tag 'player', 1, true
+Human vs Computer
+%br
+=radio_button_tag 'player', 2, false
+Computer vs Human
+%br
+=radio_button_tag 'player', 3, false
+Computer vs Computer
+%br
+=radio_button_tag 'player', 4, false
+Human vs Human
+
+
+
+%table
+  %tr
+    %td
+      .blank#1
+        %p.box
+      .first-player#1
+        %p.box
+          x
+      .second-player#1
+        %p.box
+          o
+    %td
+      .blank#2
+        %p.box
+      .first-player#2
+        %p.box
+          x
+      .second-player#2
+        %p.box
+          o
+    %td
+      .blank#3
+        %p.box
+      .first-player#3
+        %p.box
+          x
+      .second-player#3
+        %p.box
+          o
+  %tr
+    %td
+      .blank#4
+        %p.box
+      .first-player#4
+        %p.box
+          x
+      .second-player#4
+        %p.box
+          o
+    %td
+      .blank#5
+        %p.box
+      .first-player#5
+        %p.box
+          x
+      .second-player#5
+        %p.box
+          o
+    %td
+      .blank#6
+        %p.box
+      .first-player#6
+        %p.box
+          x
+      .second-player#6
+        %p.box
+          o
+  %tr
+    %td
+      .blank#7
+        %p.box
+      .first-player#7
+        %p.box
+          x
+      .second-player#7
+        %p.box
+          o
+    %td
+      .blank#8
+        %p.box
+      .first-player#8
+        %p.box
+          x
+      .second-player#8
+        %p.box
+          o
+    %td
+      .blank#9
+        %p.box
+      .first-player#9
+        %p.box
+          x
+      .second-player#9
+        %p.box
+          o
+
+:javascript
+  $('.blank').on('click', function(){
+    $(this).hide();
+    position = this.id
+    $('#' + position + '.first-player').show();
+  });
+
+}

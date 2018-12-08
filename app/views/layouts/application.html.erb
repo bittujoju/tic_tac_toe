@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TicTacToe</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>MachineLearning</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'games' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Tic Tac Toe</h1>
+    <p class="lead">This is a self learning tic tac toe bot which can be configured in 1 player, 2 player or 0 player mode.</p>
+  </div>
+</div>
+
+<%= yield %>
+</body>
 </html>

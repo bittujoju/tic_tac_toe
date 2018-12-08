@@ -1,0 +1,26 @@
+.first-player, .second-player, .blank{
+    width: 200px;
+    height: 200px;
+    font-size: 200px;
+}
+.first-player{
+    display: none;
+}
+.second-player{
+    display: none;
+}
+
+table, td {
+    border: 1px solid black;
+    margin: auto;
+}
+
+table {
+    table-layout: fixed;
+}
+
+.box {
+    position: relative;
+    left: 50px;
+    bottom: 70px;
+}
