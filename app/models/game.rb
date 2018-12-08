@@ -11,16 +11,16 @@ class Game < ActiveRecord::Base
                    [3,5,7]
   ]
 
-  def second_player_make_move(node)
+  def make_move(node, first_player=false, learning_mode=false, self_play=false)
     played_path = node.path
     played_positions = played_path.pluck(:position)
     available_positions = (1..9).to_a - played_positions
-    first_player_moves = played_positions.select.with_index { |_, i| i.odd? }
-    first_player_won = won?(first_player_moves)
+    previous_player_moves = played_positions.select.with_index { |_, i| i.odd? }
+    previous_player_won = won?(previous_player_moves)
 
-    if first_player_won
-      train(node)
-      return {first_player_won: first_player_won}
+    if previous_player_won
+      learn(node)
+      return {previous_player_won: previous_player_won}
     end
     unless node.children.exists?
       available_positions.each do |position|
@@ -31,25 +31,43 @@ class Game < ActiveRecord::Base
     game_draw = !node.children.exists?
     return {game_draw: game_draw} if game_draw
 
-    favorite_child = node.children.max do |child_1, child_2|
-      (child_1.second_player_win - child_1.first_player_win) <=> (child_2.second_player_win - child_2.first_player_win)
+    if learning_mode
+      favorite_child = node.children.min do |child_1, child_2|
+        (child_1.second_player_win + child_1.first_player_win) <=> (child_2.second_player_win + child_2.first_player_win)
+      end
+    else
+      if first_player
+        favorite_child = node.children.min do |child_1, child_2|
+          (child_1.second_player_win - child_1.first_player_win) <=> (child_2.second_player_win - child_2.first_player_win)
+        end
+      else
+        favorite_child = node.children.max do |child_1, child_2|
+          (child_1.second_player_win - child_1.first_player_win) <=> (child_2.second_player_win - child_2.first_player_win)
+        end
+      end
     end
 
-    second_player_moves = ((played_positions - first_player_moves) + [favorite_child.position])
-    second_player_won = won?(second_player_moves)
+    next_player_moves = ((played_positions - previous_player_moves) + [favorite_child.position])
+    next_player_won = won?(next_player_moves)
 
-    if second_player_won
-      train(favorite_child)
-      return {second_player_won: second_player_won, next_move: favorite_child}
+    if next_player_won
+      learn(favorite_child)
+      return {next_player_won: next_player_won, next_move: favorite_child}
     end
-    {next_move: favorite_child}
+
+    if self_play
+      p favorite_child.path.pluck(:position)
+      make_move(favorite_child, !first_player)
+    else
+      {next_move: favorite_child}
+    end
   end
 
   def won?(played_positions)
     WIN_POSITIONS.any? { |positions| positions.all? { |p| played_positions.include?(p)} }
   end
 
-  def train(node)
+  def learn(node)
     ancestors = node.path
     if ancestors.count.even?
       #first player win

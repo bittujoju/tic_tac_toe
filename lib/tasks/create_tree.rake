@@ -1,17 +1,12 @@
-namespace :tree do
-  desc 'create tree for tic tac toe'
-  task :create_tree => :environment do
-    start = Node.create!
-    positions = (1..9).to_a
+namespace :game do
+  desc 'play hundred times and learn'
 
 
-    def create_children(parent, positions)
-      positions.each do |position|
-        node = Node.create!(parent: parent, position: position)
-        create_children(node, positions - [position])
-      end
+  task :play_100_times => :environment do
+    root = Node.create!
+    game = Game.new
+    (0..500).each do |i|
+      game.make_move(root, true, true, true)
     end
-
-    create_children(start, positions)
   end
 end
