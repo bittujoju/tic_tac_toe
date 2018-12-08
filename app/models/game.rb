@@ -57,7 +57,7 @@ class Game < ActiveRecord::Base
 
     if self_play
       p favorite_child.path.pluck(:position)
-      make_move(favorite_child, !first_player)
+      make_move(favorite_child, !first_player, learning_mode, self_play)
     else
       {next_move: favorite_child}
     end
