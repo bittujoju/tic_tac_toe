@@ -34,7 +34,6 @@ class Game < ActiveRecord::Base
 
     game_draw = !node.children.exists?
     return {game_draw: game_draw, first_player: first_player} if game_draw
-
     if learning_mode
       favorite_child = node.children.min do |child_1, child_2|
         (child_1.second_player_win + child_1.first_player_win) <=> (child_2.second_player_win + child_2.first_player_win)
