@@ -8,13 +8,13 @@ class GamesController < ApplicationController
     new_move = params["new_move"].to_i
     played_positions = params["played_positions"]
     if played_positions == "[]"
-      played_positions = []
+      @played_positions = []
     else
-      played_positions = played_positions.split(',').map(&:to_i)
+      @played_positions = played_positions.split(',').map(&:to_i)
     end
 
-    @played_positions = played_positions.to_a.push(new_move)
-    node = Node.node_from_positions(played_positions)
+    @played_positions.push(new_move) unless new_move == 0
+    node = Node.node_from_positions(@played_positions)
     result = Game.new.make_move(node)
 
     if result[:previous_player_won]

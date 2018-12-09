@@ -11,11 +11,16 @@ class Game < ActiveRecord::Base
                    [3,5,7]
   ]
 
-  def make_move(node, first_player=false, learning_mode=false, self_play=false)
+  def make_move(node, learning_mode=false, self_play=false)
     played_path = node.path
     played_positions = played_path.pluck(:position)
+    first_player = played_positions.count.odd?
     available_positions = (1..9).to_a - played_positions
-    previous_player_moves = played_positions.select.with_index { |_, i| i.odd? }
+    if first_player
+      previous_player_moves = played_positions.select.with_index { |_, i| i.even? }
+    else
+      previous_player_moves = played_positions.select.with_index { |_, i| i.odd? }
+    end
     previous_player_won = won?(previous_player_moves)
 
     if previous_player_won
@@ -57,7 +62,7 @@ class Game < ActiveRecord::Base
 
     if self_play
       p favorite_child.path.pluck(:position)
-      make_move(favorite_child, !first_player, learning_mode, self_play)
+      make_move(favorite_child, learning_mode, self_play)
     else
       {next_move: favorite_child}
     end
