@@ -52,3 +52,7 @@ table tr td:last-child {
 .built-by{
     text-align: right;
 }
+
+#start-play{
+    width: 250px;
+}
