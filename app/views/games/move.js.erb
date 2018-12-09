@@ -1,16 +1,20 @@
 
+$('blank').click(true);
 <% if @previous_player_won -%>
 $('#results')[0].innerHTML = "Human Won";
+$('#play-again').append("<%= j render(:partial => 'games/play_again') %>")
 <% elsif @game_draw -%>
 position = <%=  @next_position %>
 $('#' + position + '.blank').hide();
 $('#' + position + '.second-player').show();
 $('#results')[0].innerHTML = "Game Draw";
+$('#play-again').append("<%= j render(:partial => 'games/play_again') %>")
 <% elsif @next_player_won -%>
 position = <%=  @next_position %>
 $('#' + position + '.blank').hide();
 $('#' + position + '.second-player').show();
 $('#results')[0].innerHTML = "Computer Won";
+$('#play-again').append("<%= j render(:partial => 'games/play_again') %>")
 <% else -%>
 position = <%=  @next_position %>
 $('#' + position + '.blank').hide();

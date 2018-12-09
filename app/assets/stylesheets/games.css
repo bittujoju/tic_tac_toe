@@ -5,6 +5,7 @@
 }
 .first-player{
     display: none;
+    color: darkred;
 }
 .second-player{
     display: none;
@@ -14,7 +15,7 @@
 }
 
 table, td {
-    border: 1px solid black;
+    border: 3px solid black;
     margin: auto;
 }
 
@@ -29,4 +30,12 @@ table {
     background-color: yellow;
     width: 0px;
     height: 0px;
+}
+
+#results{
+     text-align: center;
+ }
+
+.built-by{
+    text-align: right;
 }
