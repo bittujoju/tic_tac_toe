@@ -131,6 +131,8 @@
 :javascript
   $('.blank').on('click', function(){
     $(this).hide();
+    var audio = new Audio('/switch.mp3');
+    audio.play();
     position = this.id
     played_positions = $('#played_positions')[0].value
     if ((Math.round(played_positions.length / 2) % 2 == 0) || played_positions == "0"){
