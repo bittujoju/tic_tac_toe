@@ -19,8 +19,14 @@ position = <%=  @next_position %>
 $('#' + position + '.blank').hide();
 $('#' + position + '.second-player').show();
 $('#played_positions')[0].value = <%=  @played_positions %>;
-$('#results')[0].innerHTML = "Your Turn";
-$('#results')[0].show();
+if ($('#player_3')[0].checked){
+    $.ajax({url: "/games/move.js?played_positions=" + <%=  @played_positions %> + "&new_move=" + position, success: function(result){
+            console.log("called move endpoint")}})
+}
+else {
+    $('#results')[0].innerHTML = "Your Turn";
+    $('#results')[0].show();
+}
 <% end %>
 
 
