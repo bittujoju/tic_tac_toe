@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f74b685-2d98-40d7-adce-a5365d567011" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/games_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/games_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/games.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/games.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/games/index.html.haml" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/games/index.html.haml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/games/move.js.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/games/move.js.erb" afterDir="false" />
     </list>
@@ -48,9 +47,9 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Gemfile" value="43" />
-          <entry key="css" value="857" />
-          <entry key="erb" value="1196" />
-          <entry key="haml" value="2129" />
+          <entry key="css" value="869" />
+          <entry key="erb" value="1225" />
+          <entry key="haml" value="2134" />
           <entry key="js" value="61" />
           <entry key="rake" value="1057" />
           <entry key="rb" value="4396" />
@@ -59,10 +58,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="857" />
-          <entry key="Haml" value="2073" />
-          <entry key="JavaScript" value="117" />
-          <entry key="RHTML" value="1196" />
+          <entry key="CSS" value="869" />
+          <entry key="Haml" value="2077" />
+          <entry key="JavaScript" value="118" />
+          <entry key="RHTML" value="1225" />
           <entry key="Ruby" value="5496" />
           <entry key="YAML" value="17" />
         </counts>
@@ -101,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/games/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="133" column="28" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="28" />
+            <state relative-caret-position="558">
+              <caret line="150" column="37" selection-start-line="150" selection-start-column="24" selection-end-line="150" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -128,8 +127,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/games.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
+            <state relative-caret-position="375">
+              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -160,6 +159,7 @@
       <find>draw</find>
       <find>results</find>
       <find>learning_m</find>
+      <find>result</find>
     </findStrings>
     <replaceStrings>
       <replace>learn</replace>
@@ -191,10 +191,10 @@
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/app/views/games/_play_again.html.haml" />
         <option value="$PROJECT_DIR$/lib/tasks/create_tree.rake" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/games.css" />
-        <option value="$PROJECT_DIR$/app/views/games/index.html.haml" />
         <option value="$PROJECT_DIR$/app/models/game.rb" />
         <option value="$PROJECT_DIR$/app/controllers/games_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/games/index.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/games.css" />
         <option value="$PROJECT_DIR$/app/views/games/move.js.erb" />
       </list>
     </option>
@@ -323,7 +323,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544395703725" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544396362841" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -360,7 +360,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56616000" />
+    <option name="totallyTimeSpent" value="57115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="34" width="1680" height="953" extended-state="0" />
@@ -512,20 +512,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/games.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="52" column="14" selection-start-line="52" selection-start-column="14" selection-end-line="52" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/games/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="133" column="28" selection-start-line="133" selection-start-column="28" selection-end-line="133" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/game.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="411">
@@ -537,6 +523,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/games/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="558">
+          <caret line="150" column="37" selection-start-line="150" selection-start-column="24" selection-end-line="150" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/games.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
         </state>
       </provider>
     </entry>

@@ -23,6 +23,7 @@ table {
     margin: auto;
     position: relative;
     bottom: 150px;
+    pointer-events: none;
 }
 
 table tr:first-child td {

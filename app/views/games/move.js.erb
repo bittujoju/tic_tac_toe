@@ -1,9 +1,9 @@
 <% if @previous_player_won -%>
   $('#results')[0].innerHTML = "Human Won";
-  $('#results')[0].show();
+  $('table')[0].style.pointerEvents = 'none'
 <% elsif @game_draw -%>
   $('#results')[0].innerHTML = "Game Draw";
-  $('#results')[0].show();
+  $('table')[0].style.pointerEvents = 'none';
 <% elsif @game_will_draw -%>
   position = <%=  @next_position %>
   first_player = <%=  @first_player %>
@@ -14,7 +14,6 @@
     $('#' + position + '.second-player').show();
   <% end %>
   $('#results')[0].innerHTML = "Game Draw";
-  $('#results')[0].show();
 <% elsif @next_player_won -%>
   position = <%=  @next_position %>
   $('#' + position + '.blank').hide();
@@ -24,7 +23,7 @@
     $('#' + position + '.second-player').show();
   <% end %>
   $('#results')[0].innerHTML = "Computer Won";
-  $('#results')[0].show();
+  $('table')[0].style.pointerEvents = 'none';
 <% else -%>
   position = <%=  @next_position %>
   first_player = <%=  @first_player %>
@@ -36,6 +35,7 @@
   <% end %>
   $('#played_positions')[0].value = <%=  @played_positions %>;
   if ($('#player_3')[0].checked){
+      $('table')[0].style.pointerEvents = 'none';
       setTimeout(function(){
         $.ajax({url: "/games/move.js?played_positions=" + <%=  @played_positions %> + "&new_move=" + 0, success: function(result){
               console.log("called move endpoint")}})
@@ -43,7 +43,6 @@
   }
   else {
       $('#results')[0].innerHTML = "Your Turn";
-      $('#results')[0].show();
   }
 <% end %>
 
