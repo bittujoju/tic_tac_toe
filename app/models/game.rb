@@ -50,10 +50,15 @@ class Game < ActiveRecord::Base
 
     next_player_moves = ((played_positions - previous_player_moves) + [favorite_child.position])
     next_player_won = won?(next_player_moves)
+    game_will_draw = (node.children.count == 1)
 
     if next_player_won
       learn(favorite_child)
       return {next_player_won: next_player_won, next_move: favorite_child, first_player: first_player}
+    end
+
+    if game_will_draw
+      return {game_will_draw: game_will_draw, next_move: favorite_child, first_player: first_player}
     end
 
     if self_play

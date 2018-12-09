@@ -21,9 +21,11 @@ class GamesController < ApplicationController
       @previous_player_won = result[:previous_player_won]
     elsif result[:game_draw]
       @game_draw = result[:game_draw]
+    elsif result[:game_will_draw]
+      @game_will_draw = result[:game_will_draw]
+      @next_position = result[:next_move].position
     elsif result[:next_player_won]
       @next_player_won = result[:next_player_won]
-      @next_position = result[:next_move].position
       @played_positions = @played_positions.to_a.push(@next_position)
     else
       @next_position = result[:next_move].position
