@@ -7,7 +7,7 @@ class GamesController < ApplicationController
   def move
     new_move = params["new_move"].to_i
     played_positions = params["played_positions"]
-    if played_positions == "[]"
+    if played_positions == "0"
       @played_positions = []
     else
       @played_positions = played_positions.split(',').map(&:to_i)
@@ -16,7 +16,7 @@ class GamesController < ApplicationController
     @played_positions.push(new_move) unless new_move == 0
     node = Node.node_from_positions(@played_positions)
     result = Game.new.make_move(node)
-
+    @first_player = result[:first_player]
     if result[:previous_player_won]
       @previous_player_won = result[:previous_player_won]
     elsif result[:game_draw]

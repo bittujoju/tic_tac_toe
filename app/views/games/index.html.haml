@@ -14,7 +14,7 @@ Computer vs Computer
 =radio_button_tag 'player', 4, false
 Human vs Human
 
-=hidden_field_tag 'played_positions', '[]'
+=hidden_field_tag 'played_positions', '0'
 
 %br
 %br
@@ -133,7 +133,12 @@ Human vs Human
     $(this).hide();
     position = this.id
     played_positions = $('#played_positions')[0].value
-    $('#' + position + '.first-player').show();
+    if ((Math.round(played_positions.length / 2) % 2 == 0) || played_positions == "0"){
+      $('#' + position + '.first-player').show();
+      }
+    else {
+      $('#' + position + '.second-player').show();
+      }
     $.ajax({url: "/games/move.js?played_positions=" + played_positions + "&new_move=" + position, success: function(result){
     console.log("called move endpoint")}})
   });
@@ -141,13 +146,13 @@ Human vs Human
     $('.blank').show();
     $('.first-player').hide();
     $('.second-player').hide();
-    played_positions = '[]'
+    played_positions = '0'
     $('#played_positions')[0].value = played_positions
     if ($('#player_2')[0].checked || $('#player_3')[0].checked){
       $.ajax({url: "/games/move.js?played_positions=" + played_positions + "&new_move=" + 0, success: function(result){
       console.log("called move endpoint")}})
     }
-    else{
+    else {
       $('#results')[0].innerHTML = "Your Turn";
     }
 

@@ -22,10 +22,9 @@ class Game < ActiveRecord::Base
       previous_player_moves = played_positions.select.with_index { |_, i| i.odd? }
     end
     previous_player_won = won?(previous_player_moves)
-
     if previous_player_won
       learn(node)
-      return {previous_player_won: previous_player_won}
+      return {previous_player_won: previous_player_won, first_player: first_player}
     end
     unless node.children.exists?
       available_positions.each do |position|
@@ -34,7 +33,7 @@ class Game < ActiveRecord::Base
     end
 
     game_draw = !node.children.exists?
-    return {game_draw: game_draw} if game_draw
+    return {game_draw: game_draw, first_player: first_player} if game_draw
 
     if learning_mode
       favorite_child = node.children.min do |child_1, child_2|
@@ -57,14 +56,14 @@ class Game < ActiveRecord::Base
 
     if next_player_won
       learn(favorite_child)
-      return {next_player_won: next_player_won, next_move: favorite_child}
+      return {next_player_won: next_player_won, next_move: favorite_child, first_player: first_player}
     end
 
     if self_play
       p favorite_child.path.pluck(:position)
       make_move(favorite_child, learning_mode, self_play)
     else
-      {next_move: favorite_child}
+      {next_move: favorite_child, first_player: first_player}
     end
   end
 

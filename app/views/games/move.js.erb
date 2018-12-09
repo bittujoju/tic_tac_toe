@@ -1,32 +1,45 @@
 
 <% if @previous_player_won -%>
-$('#results')[0].innerHTML = "Human Won";
-$('#results')[0].show();
+  $('#results')[0].innerHTML = "Human Won";
+  $('#results')[0].show();
 <% elsif @game_draw -%>
-position = <%=  @next_position %>
-$('#' + position + '.blank').hide();
-$('#' + position + '.second-player').show();
-$('#results')[0].innerHTML = "Game Draw";
-$('#results')[0].show();
+  position = <%=  @next_position %>
+  $('#' + position + '.blank').hide();
+  <% if @first_player -%>
+    $('#' + position + '.first-player').show();
+  <% else -%>
+    $('#' + position + '.second-player').show();
+  <% end %>
+  $('#results')[0].innerHTML = "Game Draw";
+  $('#results')[0].show();
 <% elsif @next_player_won -%>
-position = <%=  @next_position %>
-$('#' + position + '.blank').hide();
-$('#' + position + '.second-player').show();
-$('#results')[0].innerHTML = "Computer Won";
-$('#results')[0].show();
+  position = <%=  @next_position %>
+  $('#' + position + '.blank').hide();
+  <% if @first_player -%>
+    $('#' + position + '.first-player').show();
+  <% else -%>
+    $('#' + position + '.second-player').show();
+  <% end %>
+  $('#results')[0].innerHTML = "Computer Won";
+  $('#results')[0].show();
 <% else -%>
-position = <%=  @next_position %>
-$('#' + position + '.blank').hide();
-$('#' + position + '.second-player').show();
-$('#played_positions')[0].value = <%=  @played_positions %>;
-if ($('#player_3')[0].checked){
-    $.ajax({url: "/games/move.js?played_positions=" + <%=  @played_positions %> + "&new_move=" + position, success: function(result){
-            console.log("called move endpoint")}})
-}
-else {
-    $('#results')[0].innerHTML = "Your Turn";
-    $('#results')[0].show();
-}
+  position = <%=  @next_position %>
+  first_player = <%=  @first_player %>
+  $('#' + position + '.blank').hide();
+  <% if @first_player -%>
+    $('#' + position + '.first-player').show();
+  <% else -%>
+    $('#' + position + '.second-player').show();
+  <% end %>
+  $('#played_positions')[0].value = <%=  @played_positions %>;
+  if ($('#player_3')[0].checked){
+      $.ajax({url: "/games/move.js?played_positions=" + <%=  @played_positions %> + "&new_move=" + 0, success: function(result){
+              console.log("called move endpoint")}})
+  }
+  else {
+      $('#results')[0].innerHTML = "Your Turn";
+      $('#results')[0].show();
+  }
 <% end %>
 
 
