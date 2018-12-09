@@ -23,6 +23,7 @@
 %br
 %h3
   #results
+    Tic Tac Toe
 
 %br
 #play-again
@@ -120,8 +121,8 @@
       .second-player#9
         %p.box
           o
-
 %br
+
 %br
 %br
 %br
@@ -145,6 +146,8 @@
     $('.blank').show();
     $('.first-player').hide();
     $('.second-player').hide();
+    $('#results')[0].innerHTML = "Tic Tac Toe"
+
     played_positions = '0'
     $('#played_positions')[0].value = played_positions
     if ($('#player_2')[0].checked || $('#player_3')[0].checked){
