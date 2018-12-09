@@ -1,22 +1,24 @@
-%h3
-  Select Game Mode
 
-%br
-=radio_button_tag 'player', 1, true
-Human vs Computer
-%br
-=radio_button_tag 'player', 2, false
-Computer vs Human
-%br
-=radio_button_tag 'player', 3, false
-Computer vs Computer
+#game-mode
+  %h3
+    Select Game Mode
 
-=hidden_field_tag 'played_positions', '0'
+  %br
+  =radio_button_tag 'player', 1, true
+  Human vs Computer
+  %br
+  =radio_button_tag 'player', 2, false
+  Computer vs Human
+  %br
+  =radio_button_tag 'player', 3, false
+  Computer vs Computer
 
-%br
-%br
-%br
-=button_tag 'Play', class: 'btn btn-lg btn-dark', id: 'start-play'
+  =hidden_field_tag 'played_positions', '0'
+
+  %br
+  %br
+  %br
+  =button_tag 'Play', class: 'btn btn-lg btn-dark', id: 'start-play'
 
 %br
 %h3

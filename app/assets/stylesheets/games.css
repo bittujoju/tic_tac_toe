@@ -21,6 +21,8 @@ td {
 table {
     border-collapse: collapse;
     margin: auto;
+    position: relative;
+    bottom: 150px;
 }
 
 table tr:first-child td {
@@ -46,13 +48,23 @@ table tr td:last-child {
 }
 
 #results{
-     text-align: center;
- }
+    text-align: center;
+    position: relative;
+    bottom: 150px;
+}
 
 .built-by{
     text-align: right;
+    position: relative;
+    bottom: 200px;
 }
 
 #start-play{
     width: 250px;
+}
+
+#game-mode{
+    position: relative;
+    top: 250px;
+    left: 90px;
 }
