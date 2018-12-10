@@ -94,7 +94,6 @@ table tr td:last-child {
 .ninety-rotate {
     position: relative;
     transform: rotate(90deg);
-    /*background-color: yellow;*/
     right: 750px;
 }
 

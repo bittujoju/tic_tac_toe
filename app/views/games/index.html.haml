@@ -117,13 +117,13 @@
   %br
   .ninety-rotate
     .letter-slider
-      %input#player_1{:checked => "checked", :type => "radio"}/
+      %input#player_1{:name => "letter", :checked => "checked", :type => "radio"}/
       %label{:for => "player_1"}
         .label_1 Human vs Computer
-      %input#player_2{ :type => "radio"}/
+      %input#player_2{:name => "letter", :type => "radio"}/
       %label{:for => "player_2"}
         .label_2 Computer vs Human
-      %input#player_3{:type => "radio"}/
+      %input#player_3{:name => "letter", :type => "radio"}/
       %label{:for => "player_3"}
         .label_3 Computer vs Computer
 
