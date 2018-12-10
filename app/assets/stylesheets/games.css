@@ -22,8 +22,9 @@ table {
     border-collapse: collapse;
     margin: auto;
     position: relative;
-    bottom: 150px;
+    top: 30px;
     pointer-events: none;
+    cursor: pointer;
 }
 
 table tr:first-child td {
@@ -51,21 +52,112 @@ table tr td:last-child {
 #results{
     text-align: center;
     position: relative;
-    bottom: 200px;
+    bottom: 0px;
 }
 
 .built-by{
     text-align: right;
     position: relative;
-    bottom: 200px;
+    top: 30px;
 }
 
 #start-play{
+    position: relative;
     width: 250px;
+    top: 100px;
+}
+
+.select-game-mode{
+    position: relative;
+    bottom: 90px;
 }
 
 #game-mode{
     position: relative;
-    top: 250px;
+    bottom: 630px;
     left: 90px;
+    width: 20%
+}
+
+
+
+.letter-slider {
+    border-bottom: 2.5px solid #000;
+    padding-bottom: 2em;
+    margin: 1em auto;
+    position: relative;
+    width: 20em;
+    left: 20px;
+    bottom: 680px;
+}
+
+.ninety-rotate {
+    position: relative;
+    transform: rotate(90deg);
+    /*background-color: yellow;*/
+    right: 750px;
+}
+
+.label_1{
+    transform: rotate(-90deg);
+    position: relative;
+    right: 0px;
+}
+
+.label_2{
+    transform: rotate(-90deg);
+    position: relative;
+    left: 90px;
+}
+
+.label_3{
+    transform: rotate(-90deg);
+    position: relative;
+    left: 160px;
+}
+.letter-slider::after{
+    content: '';
+    display: table; width: 100%; clear: both;
+}
+.letter-slider input[type="radio"] {
+    display: none;
+}
+.letter-slider label {
+    color: #bebebe;
+    float: left;
+    width: 16.6666666667%;
+    text-align: center;
+    cursor: pointer;
+    transition: color .5s;
+    font-weight: bold;
+}
+.letter-slider label:hover {
+    color: darkred;
+}
+
+.letter-slider input + label {
+    color: black;
+}
+.letter-slider label:last-of-type::after {
+    display: block;
+    width: 0;
+    height: 0;
+    content: "";
+    border: 1em solid transparent;
+    border-top-width: 0;
+    border-bottom-color: darkred;
+    position: absolute;
+    bottom: -5px;
+    right: 0;
+    margin-left: -0.6em;
+    transition: left 0.5s;
+}
+.letter-slider input:checked:nth-of-type(1) ~ label:last-of-type::after {
+    left: 5%;
+}
+.letter-slider input:checked:nth-of-type(2) ~ label:last-of-type::after {
+    left: 50%;
+}
+.letter-slider input:checked:nth-of-type(3) ~ label:last-of-type::after {
+    left: 95%;
 }

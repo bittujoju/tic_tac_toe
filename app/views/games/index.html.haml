@@ -1,24 +1,4 @@
 
-#game-mode
-  %h3
-    Select Game Mode
-
-  %br
-  =radio_button_tag 'player', 1, true
-  Human vs Computer
-  %br
-  =radio_button_tag 'player', 2, false
-  Computer vs Human
-  %br
-  =radio_button_tag 'player', 3, false
-  Computer vs Computer
-
-  =hidden_field_tag 'played_positions', '0'
-
-  %br
-  %br
-  %br
-  =button_tag 'Play', class: 'btn btn-lg btn-dark', id: 'start-play'
 
 %br
 %h3
@@ -128,10 +108,38 @@
 %br
 %h6.built-by
   created by b2d2
+
+
+#game-mode
+  %h3.select-game-mode
+    Select Game Mode
+
+  %br
+  .ninety-rotate
+    .letter-slider
+      %input#player_1{:checked => "checked", :type => "radio"}/
+      %label{:for => "player_1"}
+        .label_1 Human vs Computer
+      %input#player_2{ :type => "radio"}/
+      %label{:for => "player_2"}
+        .label_2 Computer vs Human
+      %input#player_3{:type => "radio"}/
+      %label{:for => "player_3"}
+        .label_3 Computer vs Computer
+
+  =hidden_field_tag 'played_positions', '0'
+
+  %br
+  %br
+  %br
+  =button_tag 'Play', class: 'btn btn-lg btn-dark', id: 'start-play'
+
+
 :javascript
   $('.blank').on('click', function(){
     $(this).hide();
-    var audio = new Audio('/switch.mp3');
+    $('table')[0].style.pointerEvents = 'none';
+    var audio = new Audio('/human_click.mp3');
     audio.play();
     position = this.id
     played_positions = $('#played_positions')[0].value
@@ -141,14 +149,16 @@
     else {
       $('#' + position + '.second-player').show();
       }
-    $.ajax({url: "/games/move.js?played_positions=" + played_positions + "&new_move=" + position, success: function(result){
-    console.log("called move endpoint")}})
+
+    setTimeout(function(){
+      $.ajax({url: "/games/move.js?played_positions=" + played_positions + "&new_move=" + position, success: function(result){
+        console.log("called move endpoint")}})
+      }, 1000);
   });
   $('#start-play').on('click', function(){
     $('.blank').show();
     $('.first-player').hide();
     $('.second-player').hide();
-    $('table')[0].style.pointerEvents = 'auto';
     $('#results')[0].innerHTML = "Tic Tac Toe"
 
     played_positions = '0'
@@ -158,6 +168,7 @@
       console.log("called move endpoint")}})
     }
     else {
+      $('table')[0].style.pointerEvents = 'auto';
       $('#results')[0].innerHTML = "Your Turn";
     }
 
